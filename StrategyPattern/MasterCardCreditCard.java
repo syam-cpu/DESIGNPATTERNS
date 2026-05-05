@@ -3,9 +3,9 @@ public class MasterCardCreditCard  extends CreditCard implements RefundCompatibl
 
     private RefundStrategy refundStrategy;
     
-    public MasterCardCreditCard()
+    public MasterCardCreditCard(RefundStrategy refundStrategy)
     {
-        this.refundStrategy = new BankAccountRefundStrategy();
+        this.refundStrategy = refundStrategy;
     }
 
     public void swipeAndPay()

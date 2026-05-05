@@ -3,9 +3,9 @@ public class RupayCreditCard extends CreditCard implements UpiCompatibleCreditCa
 
     private RefundStrategy refundStrategy;
 
-    public RupayCreditCard()
+    public RupayCreditCard(RefundStrategy refundStrategy)
     {
-        refundStrategy = new SameInstrumentRefundStrategy();
+        this.refundStrategy = refundStrategy;
     }
 
     @Override

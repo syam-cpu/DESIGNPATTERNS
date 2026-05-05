@@ -3,9 +3,9 @@ public class VisaCreditCard extends CreditCard implements RefundCompatibleCredit
 
     private RefundStrategy refundStrategy;
 
-    public VisaCreditCard()
+    public VisaCreditCard(RefundStrategy refundStrategy)
     {
-        this.refundStrategy = new BankAccountRefundStrategy();
+        this.refundStrategy = refundStrategy;
     }
 
     @Override
