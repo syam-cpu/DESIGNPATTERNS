@@ -16,4 +16,24 @@ public class Expense {
         this.amountUsd = amountUsd;
         this.expenseType = expenseType;
     }
+
+    public String getExpenseId()
+    {
+        return id;
+    }
+
+    public String getTripId()
+    {
+        return tripId;
+    }
+
+    public Double getAmountUsd()
+    {
+        return amountUsd;
+    }
+
+    public ExpenseType gExpenseType()
+    {
+        return expenseType;
+    }
 }
