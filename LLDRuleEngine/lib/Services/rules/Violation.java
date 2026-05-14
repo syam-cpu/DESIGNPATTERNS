@@ -1,4 +1,4 @@
-package LLDRuleEngine.lib.rules;
+package LLDRuleEngine.lib.Services.rules;
 
 public class Violation {
     
@@ -12,5 +12,10 @@ public class Violation {
     public static Violation of(String message)
     {
         return new Violation(message);
+    }
+
+    public String getMessage()
+    {
+        return message;
     }
 }

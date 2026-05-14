@@ -18,7 +18,7 @@ public class RuleRegistry {
     {
         Map<ExpenseType, List<ExpenseRule>> registry =  new HashMap<>();
 
-        registry.put(ExpenseType.RESTAURANT, List.of(new DisallowRule(), new MaxAmountRule(75)));
+        registry.put(ExpenseType.RESTAURANT, List.of(new MaxAmountRule(75)));
 
         registry.put(ExpenseType.AIRFARE, List.of(new DisallowRule()));
 

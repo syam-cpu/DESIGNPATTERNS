@@ -32,7 +32,7 @@ public class Expense {
         return amountUsd;
     }
 
-    public ExpenseType gExpenseType()
+    public ExpenseType getExpenseType()
     {
         return expenseType;
     }

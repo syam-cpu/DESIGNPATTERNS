@@ -26,7 +26,7 @@ public class SimpleRuleEngine implements RuleEngine{
                 for (Expense expense : expenses)
                 {
                     // fetch all the rules for the expense type if no rules are found then we have empty list.
-                    List<ExpenseRule> rules  = expenseRulesRegistry.getOrDefault(expense.gExpenseType(), List.of());
+                    List<ExpenseRule> rules  = expenseRulesRegistry.getOrDefault(expense.getExpenseType(), List.of());
                     
                     checkExpenseAgainstRule(expense, rules, violations);
                     checkExpenseAgainstRule(expense, getAllExpenseRulesRegistry, violations);
