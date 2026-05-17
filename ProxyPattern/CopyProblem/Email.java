@@ -1,6 +1,6 @@
 package ProxyPattern.CopyProblem;
 
-public class Email {
+public class Email implements Copyable<Email> {
     private String sender;
     private String receiver;
     private String subject;
@@ -65,5 +65,11 @@ public class Email {
         System.out.println("Receiver: " + receiver);
         System.out.println("Subject: " + subject);
         System.out.println("Body: " + body);
+    }
+
+
+    @Override
+    public Email Copy() {
+        return new Email(this);
     }
 }
