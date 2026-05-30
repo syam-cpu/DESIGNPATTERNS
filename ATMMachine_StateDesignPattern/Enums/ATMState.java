@@ -1,0 +1,9 @@
+package ATMMachine_StateDesignPattern.Enums;
+
+public enum ATMState {
+    READY_FOR_TRANSACTION,
+    READING_CARD_DETAILS_AND_PIN,
+    READING_CASHWISHDRAWAL_DETAILS,
+    DISPENSING_CASH,
+    EJECTING_CARD
+}
