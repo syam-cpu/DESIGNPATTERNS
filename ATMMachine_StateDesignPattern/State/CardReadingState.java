@@ -3,7 +3,7 @@ package ATMMachine_StateDesignPattern.State;
 import ATMMachine_StateDesignPattern.Enums.ATMState;
 import ATMMachine_StateDesignPattern.Models.Card;
 
-public class ReadyForTransaction implements State {
+public class CardReadingState implements State {
 
     @Override
     public int initTransaction() {
@@ -20,21 +20,24 @@ public class ReadyForTransaction implements State {
     @Override
     public int dispenseCash(int transactionId) {
         // TODO Auto-generated method stub
-        throw new IllegalStateException();
+        throw new UnsupportedOperationException("Unimplemented method 'dispenseCash'");
     }
 
     @Override
     public void ejectCard() {
-        throw new IllegalStateException("Cannot eject card without reading card details");
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'ejectCard'");
     }
 
     @Override
     public boolean readCashWithdrawalDetails(int transactionId, int amount) {
-        throw new IllegalStateException("cannot read cash withdrawal details without reading card details.");
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'readCashWithdrawalDetails'");
     }
 
     @Override
     public ATMState getState() {
-        return ATMState.READY_FOR_TRANSACTION;
+        return ATMState.READING_CARD_DETAILS_AND_PIN;
     }
+    
 }
