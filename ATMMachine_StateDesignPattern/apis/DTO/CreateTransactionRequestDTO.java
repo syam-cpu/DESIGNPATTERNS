@@ -1,9 +1,9 @@
 package ATMMachine_StateDesignPattern.apis.DTO;
 
-public class CreateTransactionDTO {
+public class CreateTransactionRequestDTO {
     private final  String atmId;
 
-    public CreateTransactionDTO(String atmId)
+    public CreateTransactionRequestDTO(String atmId)
     {
         this.atmId = atmId;
     }

@@ -5,7 +5,7 @@ import ATMMachine_StateDesignPattern.Models.ATM;
 import ATMMachine_StateDesignPattern.Models.Card;
 import ATMMachine_StateDesignPattern.apis.BackendApi;
 import ATMMachine_StateDesignPattern.apis.NodeBackendAPI;
-import ATMMachine_StateDesignPattern.apis.DTO.CreateTransactionDTO;
+import ATMMachine_StateDesignPattern.apis.DTO.CreateTransactionRequestDTO;
 
 public class ReadyForTransactionState implements State {
 
@@ -21,12 +21,14 @@ public class ReadyForTransactionState implements State {
 
     @Override
     public int initTransaction() {
-        CreateTransactionDTO createTransactionDTO = new CreateTransactionDTO(this.atm.getAtmId());
+        CreateTransactionRequestDTO createTransactionDTO = new CreateTransactionRequestDTO(this.atm.getAtmId());
         int transactionId = this.backendApi.createTransaction(createTransactionDTO);
         if (transactionId == 0)
         {
             throw new RuntimeException("Transaction could not be created");
         }
+        // Now that we have the transaction Id from backend , we should move the ATM to next state 
+        this.atm.changeState(new ReadCardDetailsAndPinState());
         return transactionId;
     }
 
