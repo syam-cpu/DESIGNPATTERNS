@@ -13,10 +13,10 @@ public class ReadyForTransactionState implements State {
     private final ATM atm;
     private final BackendApi backendApi;
 
-    public ReadyForTransactionState(ATM atm, BackendApi backendApi)
+    public ReadyForTransactionState(ATM atm)
     {
         this.atm = atm;
-        this.backendApi = backendApi;
+        this.backendApi = new NodeBackendAPI();
     }
 
     @Override
@@ -28,12 +28,12 @@ public class ReadyForTransactionState implements State {
             throw new RuntimeException("Transaction could not be created");
         }
         // Now that we have the transaction Id from backend , we should move the ATM to next state 
-        this.atm.changeState(new ReadCardDetailsAndPinState());
+        this.atm.changeState(new ReadCardDetailsAndPinState(atm));
         return transactionId;
     }
 
     @Override
-    public boolean readCardDetailsAndPin(Card card) {
+    public boolean readCardDetailsAndPin(Card card, String pin) {
         throw new IllegalStateException("Cannot read card details and pin without inserting card");
     }
 
@@ -48,12 +48,17 @@ public class ReadyForTransactionState implements State {
     }
 
     @Override
-    public boolean readCashWithdrawalDetails(int transactionId, int amount) {
+    public boolean readCashWithdrawalDetails(Card card, int transactionId, int amount) {
         throw new IllegalStateException("cannot read cash withdrawal details without reading card details.");
     }
 
     @Override
     public ATMState getState() {
         return ATMState.READY_FOR_TRANSACTION;
+    }
+
+    @Override
+    public boolean cancelTransaction(int transactionId) {
+        throw new IllegalStateException("Cannot cancel transaction without reading card details and pin");
     }
 }

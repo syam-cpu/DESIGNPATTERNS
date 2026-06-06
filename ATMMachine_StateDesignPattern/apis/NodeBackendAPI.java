@@ -1,6 +1,7 @@
 package ATMMachine_StateDesignPattern.apis;
 
 import ATMMachine_StateDesignPattern.apis.DTO.CreateTransactionRequestDTO;
+import ATMMachine_StateDesignPattern.apis.DTO.GetATMAmountRequestDTO;
 import ATMMachine_StateDesignPattern.apis.DTO.UpdateATMStateRequestDTO;
 
 public class NodeBackendAPI implements BackendApi{
@@ -29,5 +30,11 @@ public class NodeBackendAPI implements BackendApi{
         //Assume that there is an implementation that calls the backend to update the state of the ATM.
 
         throw new UnsupportedOperationException("Unimplemented method 'updateState'");
+    }
+
+    @Override
+    public int getATMAmount(GetATMAmountRequestDTO getATMAmountRequestDTO) {
+
+        return 1000;
     }
 }

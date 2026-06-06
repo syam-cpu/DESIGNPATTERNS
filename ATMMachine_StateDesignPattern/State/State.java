@@ -7,13 +7,15 @@ public interface State {
     
     int initTransaction();
 
-    boolean readCardDetailsAndPin(Card card); // returns true if card is valid. and false otherwise
+    boolean readCardDetailsAndPin(Card card, String pin); // returns true if card is valid. and false otherwise
 
     int dispenseCash(int transactionId); // returns the amount dispensed.
 
     void ejectCard();
 
-    boolean readCashWithdrawalDetails(int transactionId , int amount); // returns true if cashwithdrawal details are valid and false otherwise.
+    boolean readCashWithdrawalDetails(Card card, int transactionId , int amount); // returns true if cashwithdrawal details are valid and false otherwise.
     
     ATMState getState();
+
+    boolean cancelTransaction(int transactionId);
 }
