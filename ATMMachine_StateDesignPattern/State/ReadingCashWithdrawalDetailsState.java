@@ -26,7 +26,7 @@ public class ReadingCashWithdrawalDetailsState implements State{
     }
 
     @Override
-    public int dispenseCash(int transactionId) {
+    public int dispenseCash(Card card, int amount, int transactionId) {
         throw new IllegalStateException("Cannot dispense cash without reading cash withdrawal details.");
     }
 
@@ -46,7 +46,7 @@ public class ReadingCashWithdrawalDetailsState implements State{
         }
         else
         {
-            this.atm.changeState(new ReadyForTransactionState(atm));
+            this.atm.changeState(new EjectingCardState(atm));
         }
         return isWithDrawalValid;
     }

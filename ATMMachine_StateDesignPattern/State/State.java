@@ -9,7 +9,7 @@ public interface State {
 
     boolean readCardDetailsAndPin(Card card, String pin); // returns true if card is valid. and false otherwise
 
-    int dispenseCash(int transactionId); // returns the amount dispensed.
+    int dispenseCash(Card card, int amount, int transactionId); // returns the amount dispensed.
 
     void ejectCard();
 

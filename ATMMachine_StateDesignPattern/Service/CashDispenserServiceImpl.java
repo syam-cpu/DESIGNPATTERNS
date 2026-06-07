@@ -2,15 +2,16 @@ package ATMMachine_StateDesignPattern.Service;
 
 import ATMMachine_StateDesignPattern.Models.ATM;
 import ATMMachine_StateDesignPattern.apis.BackendApi;
+import ATMMachine_StateDesignPattern.apis.NodeBackendAPI;
 import ATMMachine_StateDesignPattern.apis.DTO.GetATMAmountRequestDTO;
 
 public class CashDispenserServiceImpl implements CashDispenserService{
 
     private final BackendApi backendApi;
 
-    public CashDispenserServiceImpl(BackendApi backendApi)
+    public CashDispenserServiceImpl()
     {
-        this.backendApi = backendApi;
+        this.backendApi = new NodeBackendAPI();
     }
 
     @Override

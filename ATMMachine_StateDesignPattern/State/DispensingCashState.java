@@ -1,15 +1,21 @@
 package ATMMachine_StateDesignPattern.State;
 
 import ATMMachine_StateDesignPattern.Enums.ATMState;
+import ATMMachine_StateDesignPattern.Factory.CardManagerFactory;
 import ATMMachine_StateDesignPattern.Models.ATM;
 import ATMMachine_StateDesignPattern.Models.Card;
+import ATMMachine_StateDesignPattern.Service.CardManagerService;
+import ATMMachine_StateDesignPattern.Service.CashDispenserService;
+import ATMMachine_StateDesignPattern.Service.CashDispenserServiceImpl;
 
 public class DispensingCashState implements State{
     private final ATM atm;
+    private final CashDispenserService cashDispenserService;
 
     public DispensingCashState(ATM atm)
     {
         this.atm = atm;
+        this.cashDispenserService = new CashDispenserServiceImpl();
     }
 
     @Override
@@ -23,8 +29,19 @@ public class DispensingCashState implements State{
     }
 
     @Override
-    public int dispenseCash(int transactionId) {
-        
+    public int dispenseCash(Card card, int amount, int transactionId) {
+        CardManagerService manager = CardManagerFactory.getCardManager(card.getCardType());
+        boolean isTxnSuccess = manager.doTransaction(card, amount, transactionId);
+        if (isTxnSuccess)
+        {
+            this.cashDispenserService.dispenseCash(atm, amount);
+        }
+        else
+        {
+            System.out.println("Something went wrong");
+        }
+        this.atm.changeState(new EjectingCardState(atm));
+        return amount;
     }
 
     @Override
@@ -46,5 +63,4 @@ public class DispensingCashState implements State{
     public boolean cancelTransaction(int transactionId) {
         throw new IllegalStateException("cannot cancel transaction while dispensing cash");
     }
-    
 }

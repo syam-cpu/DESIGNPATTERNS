@@ -30,13 +30,13 @@ public class ReadCardDetailsAndPinState implements State {
         }
         else
         {
-            this.atm.changeState(new ReadyForTransactionState(atm));
+            this.atm.changeState(new EjectingCardState(atm));
         }
         return isCardValid;
     }
 
     @Override
-    public int dispenseCash(int transactionId) {
+    public int dispenseCash(Card card, int amount, int transactionId) {
         throw new IllegalStateException("Cannot dispense cash while reading card details and pin");
     }
 
