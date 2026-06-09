@@ -1,6 +1,13 @@
 package RouteHandlerChainOfResponsiblity.Controller;
 
 import RouteHandlerChainOfResponsiblity.DTO.Request;
+import RouteHandlerChainOfResponsiblity.Factory.RequestHandlerFactory;
+import RouteHandlerChainOfResponsiblity.Handlers.AuthenticationHandler;
+import RouteHandlerChainOfResponsiblity.Handlers.AuthorizationHandler;
+import RouteHandlerChainOfResponsiblity.Handlers.FinishingHandler;
+import RouteHandlerChainOfResponsiblity.Handlers.RequestHandler;
+import RouteHandlerChainOfResponsiblity.Handlers.ValidateBodyHandler;
+import RouteHandlerChainOfResponsiblity.Handlers.ValidateParamsHandler;
 import RouteHandlerChainOfResponsiblity.Schema.ToDo;
 
 public class ToDoController {
@@ -8,6 +15,8 @@ public class ToDoController {
     {
         //Execute initial handlers.
         // return a new todo.
+        RequestHandlerFactory.getHandlesForCreateTodo().handle(request);
+
         return new ToDo();
     }
 }
