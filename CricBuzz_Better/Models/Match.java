@@ -1,5 +1,6 @@
 package CricBuzz_Better.Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Match {
