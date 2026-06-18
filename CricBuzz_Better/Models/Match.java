@@ -13,7 +13,8 @@ public class Match {
     private String status;
     private Innings innings1;
     private Innings innings2;
-    private List<String> commentary;   
+    private List<String> commentary;
+    private boolean isFirstInnings;   
 
     public Match(String matchId, Team team1, Team team2, String venue, String date, String time, String status, Innings innings1, Innings innings2)
     {
@@ -27,7 +28,18 @@ public class Match {
         this.innings1 = innings1;
         this.innings2 = innings2;
         this.commentary = new ArrayList<String>();
+        this.isFirstInnings = true;
 
+    }
+
+    public void setFirstInnings(boolean isFirstInnings)
+    {
+        this.isFirstInnings = isFirstInnings;
+    }
+
+    public boolean getFirstInnings()
+    {
+        return this.isFirstInnings;
     }
 
     public void setCommentary(List<String> commentary)
