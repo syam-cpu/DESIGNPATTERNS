@@ -1,5 +1,7 @@
 package CricBuzz_Better.Subscribers;
 
+import java.util.List;
+
 import CricBuzz_Better.Models.Innings;
 import CricBuzz_Better.Models.Match;
 import CricBuzz_Better.Producer.Producer;
@@ -8,10 +10,14 @@ public class ScoreBoardSubscriber implements Subscriber{
     
 
     private Match match;
-
-    public ScoreBoardSubscriber(Match match)
+    private List<Producer> producers;
+    public ScoreBoardSubscriber(Match match, List<Producer> producers)
     {
         this.match = match;
+        for (Producer producer : producers)
+        {
+            producer.subscribe(this);
+        }
     }
 
     @Override

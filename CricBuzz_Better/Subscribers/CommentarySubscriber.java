@@ -13,6 +13,11 @@ public class CommentarySubscriber implements Subscriber{
     public CommentarySubscriber(List<Producer> producers)
     {
         commentary = new ArrayList<String>();
+        this.producers = producers;
+        for (Producer producer : producers)
+        {
+            producer.subscribe(this);
+        }
     }
 
     @Override

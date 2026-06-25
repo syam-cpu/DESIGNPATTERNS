@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import CricBuzz_Better.Models.Match;
-import CricBuzz_Better.Subscribers.ScoreBoardSubscriber;
 import CricBuzz_Better.Subscribers.Subscriber;
 
-public class IccScoreProducer implements Producer {
+public class BCCIProducer implements Producer {
     private Match match;
     private List<Subscriber> subscribers;
 
-    public IccScoreProducer(Match match)
+    public BCCIProducer(Match match)
     {
         this.match = match;
         this.subscribers = new ArrayList<Subscriber>();
@@ -19,9 +18,8 @@ public class IccScoreProducer implements Producer {
 
     public void scoreUpdated()
     {
-        // we will call the api layer to get the data for us.
-        //  and the api layer has the logic for sse.
-        //this.scoreBoardSubscriber.update(this);
+        // some api or some mechanism to fetch the data.
+       // this.scoreBoardSubscriber.update(this);
     }
 
     @Override
