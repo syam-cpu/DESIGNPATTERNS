@@ -11,7 +11,7 @@ public class ParkingLot {
     public ParkingLot(List<ParkingFloor> floors)
     {
         this.floors = floors;
-        this.parkingLotService = new ParkingLotService();
+        this.parkingLotService = new ParkingLotService(this);
     }
 
     public void addParkingFloor(ParkingFloor parkingFloor)
